@@ -1826,7 +1826,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #286fe3;
+  background: #83aa4e;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2910,14 +2910,6 @@ pre .javascript .function {
 }
 .site-meta {
   background-color: #333;
-}
-.sidebar-nav .sidebar-nav-active {
-  color: #0277bd;
-  border-bottom: 2px #0277bd;
-}
-.post-toc .nav .active-current a {
-  color: #0277bd;
-  border-bottom-color: #0277bd;
 }
 .post-copyright {
   border-left-color: #607d8b;
