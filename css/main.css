@@ -1102,7 +1102,7 @@ pre .javascript .function {
   display: inline-block;
   padding: 0 40px;
   color: #fff;
-  background: #333;
+  background: #222;
   border-bottom: none;
 }
 .brand:hover {
@@ -1826,7 +1826,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #902232;
+  background: #e0ffff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2903,4 +2903,7 @@ pre .javascript .function {
   .pagination {
     margin: 8px 0 0;
   }
+}
+.site-meta {
+  background-color: #333;
 }
