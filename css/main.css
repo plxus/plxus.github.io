@@ -1826,7 +1826,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #d98795;
+  background: #fff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2903,6 +2903,10 @@ pre .javascript .function {
   .pagination {
     margin: 8px 0 0;
   }
+}
+.headband {
+  height: 20px;
+  background-color: #eee;
 }
 .site-meta {
   background-color: #333;
