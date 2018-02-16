@@ -1844,7 +1844,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff66bf;
+  background: #2a5cff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2974,6 +2974,9 @@ body {
   }
   .category-all-page .category-list-item {
     margin: 5px 24px;
+  }
+  .posts-expand .post-comments-count {
+    display: inline;
   }
 }
 .posts-expand .post-meta {
