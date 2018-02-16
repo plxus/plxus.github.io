@@ -1844,7 +1844,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c16bff;
+  background: #e337ba;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2922,11 +2922,23 @@ body {
   height: 0px;
   background-color: #333;
 }
+.header-inner {
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
+}
 .site-meta {
   background-color: #333;
 }
+.menu .menu-item .badge {
+  text-shadow: none;
+  background-color: #bbb;
+}
+.site-nav-toggle {
+  right: 20px !important;
+  top: 50% !important;
+}
 .sidebar-inner {
   padding-top: 30px;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
 }
 .site-author-image {
   margin-bottom: 10px;
@@ -2935,6 +2947,22 @@ body {
 }
 .site-author-name {
   font-size: 15px;
+}
+.post-block {
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  .post-block {
+    padding: 36px 24px;
+  }
+}
+@media (max-width: 767px) {
+  .post-block {
+    padding: 30px 14px;
+  }
+}
+.post-header h1 {
+  margin: 0 20px 10px 20px;
 }
 .post-body h2 {
   padding-bottom: 2px;
