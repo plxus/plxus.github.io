@@ -1844,7 +1844,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4706ba;
+  background: #42c432;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2990,6 +2990,20 @@ body {
 }
 .post-copyright {
   border-left-color: #78909c;
+}
+.comments {
+  padding: 50px 40px 40px 40px;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
+}
+@media (max-width: 991px) and (min-width: 768px) {
+  .comments {
+    padding: 40px 28px 28px 28px;
+  }
+}
+@media (max-width: 767px) {
+  .comments {
+    padding: 40px 14px 14px 14px;
+  }
 }
 .sidebar-position-right .footer-inner {
   padding-right: 0;
