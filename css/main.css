@@ -1844,7 +1844,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f2ffe3;
+  background: #4706ba;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2918,6 +2918,9 @@ pre .javascript .function {
 body {
   font-size: 15px;
 }
+::selection {
+  background-color: #424242;
+}
 .headband {
   height: 0px;
   background-color: #333;
@@ -2937,7 +2940,6 @@ body {
   top: 50% !important;
 }
 .sidebar-inner {
-  padding-top: 30px;
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
 }
 .site-author-image {
@@ -2949,17 +2951,33 @@ body {
   font-size: 15px;
 }
 .post-block {
+  padding: 50px 40px;
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
+}
+.post-button {
+  margin-top: 30px;
+}
+.btn {
+  border-radius: 3px;
 }
 @media (max-width: 991px) and (min-width: 768px) {
   .post-block {
-    padding: 36px 24px;
+    padding: 40px 28px;
+  }
+  .category-all-page .category-list-item {
+    margin: 5px 24px;
   }
 }
 @media (max-width: 767px) {
   .post-block {
-    padding: 30px 14px;
+    padding: 40px 14px;
   }
+  .category-all-page .category-list-item {
+    margin: 5px 24px;
+  }
+}
+.posts-expand .post-meta {
+  margin: 0 0 40px 0;
 }
 .post-header h1 {
   margin: 0 20px 15px 20px;
@@ -2971,10 +2989,11 @@ body {
   border-bottom: none;
 }
 .post-copyright {
-  border-left-color: #607d8b;
+  border-left-color: #78909c;
 }
 .sidebar-position-right .footer-inner {
   padding-right: 0;
+margin
 }
 .footer-inner .author {
   color: #555;
