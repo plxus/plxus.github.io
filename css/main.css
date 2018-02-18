@@ -1844,7 +1844,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #3cffff;
+  background: #90ffff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2958,7 +2958,7 @@ body {
   margin-top: 30px;
 }
 .btn {
-  border-radius: 3px;
+  border-radius: 2px;
 }
 @media (max-width: 991px) and (min-width: 768px) {
   .post-block {
