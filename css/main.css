@@ -1844,7 +1844,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #14bfff;
+  background: #9a6e7f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3015,6 +3015,9 @@ body {
 }
 .post-copyright {
   border-left-color: #78909c;
+}
+.pagination {
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
 }
 .comments {
   padding: 50px 40px 40px 40px;
