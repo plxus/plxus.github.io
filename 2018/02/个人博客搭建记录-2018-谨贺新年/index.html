@@ -85,7 +85,7 @@
     version: '6.0.5',
     sidebar: {"position":"right","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: true,
-    fastclick: false,
+    fastclick: true,
     lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -117,7 +117,7 @@
 <meta property="og:site_name" content="plusxu.blog()">
 <meta property="og:description" content="序言やれやれ，本博客的第一篇文章竟然 拖延 选在这样一个时候发出，当然首先要祝福看到这篇文章的大家新春快乐，阖家幸福！😄 在辞旧迎新的鞭炮声中，Plus Xu 的个人博客终于是可喜可贺地搭建完成了 (゜-゜)つロ 干杯~ 希望在我的努力下可以让这个平凡得有些无聊的世界变得更加热闹吧。 对于博客和个人站点，其实从很久以前就开始尝试过各种各样的技术和服务，包括 Strikingly、Weebly 和">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-02-16T11:19:54.247Z">
+<meta property="og:updated_time" content="2018-02-23T15:10:17.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="个人博客搭建记录 &amp;&amp; 2018 谨贺新年">
 <meta name="twitter:description" content="序言やれやれ，本博客的第一篇文章竟然 拖延 选在这样一个时候发出，当然首先要祝福看到这篇文章的大家新春快乐，阖家幸福！😄 在辞旧迎新的鞭炮声中，Plus Xu 的个人博客终于是可喜可贺地搭建完成了 (゜-゜)つロ 干杯~ 希望在我的努力下可以让这个平凡得有些无聊的世界变得更加热闹吧。 对于博客和个人站点，其实从很久以前就开始尝试过各种各样的技术和服务，包括 Strikingly、Weebly 和">
@@ -442,10 +442,10 @@
 <p><strong>Jekyll</strong></p>
 <p><a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a> 是目前最流行的静态站点生成器，基于 Ruby 运行环境。顺便说一句 GitHub Pages 本身就使用了 Jekyll 的技术。本博客之所以没有采用 Jekyll，主要是觉得没有什么好看的主题（果然是个看脸的时代啊 ==），而且官方文档对新手不够友好，另外还是基于不太熟悉的 Ruby，对比之下还是没有选择 Jekyll。</p>
 <p><strong>Hexo</strong></p>
-<p><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 是一个博客框架，同时也是一个静态站点生成器，基于 Node.js 运行环境。选择 Hexo 的直接原因就是它有一套非常漂亮的主题 <a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">NexT</a>，同样在 GitHub 开源。虽然 Hexo 貌似已经近两年没有更新了（不禁担忧它疑似将成为有生之年系列），但 NexT 还有很多热心的贡献者在积极地维护（不过似乎之前的一位主要贡献者失联了）。NexT 不仅样式精美，还极大地拓展了 Hexo 框架的功能，可定制程度也很高，甚至可以说它是一套独立的博客框架了，所以最后选择 Hexo + NexT 来配置自己的站点。</p>
+<p><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 是一个博客框架，同时也是一个静态站点生成器，基于 Node.js 运行环境。选择 Hexo 的直接原因就是它有一套非常漂亮的主题 <a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">NexT</a>，同样在 GitHub 开源。虽然 Hexo 的官网貌似已经近两年没有更新了（不禁担忧它疑似将成为有生之年系列），但 NexT 还有很多热心的贡献者在积极维护（然而最初的一位主要贡献者最近似乎失联了）。NexT 不仅样式精美，还极大地拓展了 Hexo 框架的功能，可定制程度也很高，甚至可以说它是一套独立的博客框架了，所以我最后选择 Hexo + NexT 来配置自己的站点。</p>
 <p><strong>Hugo</strong></p>
-<p><a href="http://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 是一个诞生时间不长的静态站点生成器，但是发展势头很快，它基于 Go 语言，似乎在页面的构建速度上更有优势。目前一段时间更新频率很高，几乎每周都有新功能加入。但相比于前两者，在主题和插件的支持上略显不足。个人还是非常看好 Hugo 的，如果能有像 NexT 一样的主题，不排除未来迁移到 Hugo 的可能。</p>
-<p>在确定使用 Hexo 之后，接下来就是一步步按照官方文档的说明搭好环境，创建新项目，然后部署到托管服务器上。在这里我选择了比较可靠的 GitHub Pages，每个 GitHub 用户可以免费创建一个个人主页，以及任意数量的项目主页，当然它们都只能是静态页面。虽然每个站点的托管容量有限制，但作为个人博客而言已经足够了，而且省下了租用虚拟主机的费用。另外，虽然这样一来不用花钱就可以搭个博客，但毕竟是在 github.io 的域名下，强迫症患者可能会感到不适。要解决此问题也很简单，可以在域名服务商那里注册一个自己的域名，然后做域名转发，直接跳转到 github.io 就好了。</p>
+<p><a href="http://gohugo.io/" target="_blank" rel="noopener">Hugo</a> 是一个诞生时间不长的静态站点生成器，但是发展势头很快，它基于 Go 语言，似乎在页面的构建速度上更有优势。目前一段时间更新频率很高，几乎每周都有新功能加入。但相比于前两者，在主题和插件的支持上略显不足。个人还是非常看好 Hugo 的，如果能有像 NexT 一样功能完善且样式精美的主题，不排除未来将博客迁移到 Hugo 的可能。</p>
+<p>在确定使用 Hexo 之后，接下来就是一步步按照官方文档的说明搭好环境，创建新项目，然后部署到托管服务器上。在这里我选择了比较可靠的 GitHub Pages，每个 GitHub 用户可以免费创建一个个人主页，以及任意数量的项目主页，当然它们都只能是静态页面。虽然每个站点的托管容量有限制，但作为个人博客而言已经足够了，而且省下了租用虚拟主机的费用。另外，虽然这样一来不用花钱就可以搭个博客，但毕竟是在 github.io 的域名下，强迫症患者可能会感到不适。要解决此问题也很简单，可以在域名服务商那里注册一个自己的域名，然后做域名转发，直接跳转到 username.github.io 就好了。</p>
 <p><del>唯一的担心是哪天 GFW 把 GitHub 给墙了，那岂不是要 gg……</del></p>
 <h3 id="WordPress-虚拟主机"><a href="#WordPress-虚拟主机" class="headerlink" title="WordPress + 虚拟主机"></a>WordPress + 虚拟主机</h3><p>对这种技术架构了解得并不是很多。WordPress 是一个很著名的博客框架，但不同于静态站点生成器，它必须部署在服务器上，通过执行脚本和操作数据库来动态地呈现页面。因此，要想使用 WordPress，GitHub Pages 这类服务肯定是不行了，国内一般会选择阿里云、腾讯云提供的虚拟主机，顺便注册个域名，通过这种方式也能实现博客的搭建。刚才也提到了，WordPress 的后台管理功能对新手而言确实很强大，不懂命令行也能流畅地操作；而且支持众多的插件和主题，可定制程度也很高。但是个人认为整个建站过程好像也并不是很简单的样子，而且托管在国内的服务器上的站点必须备案，想想天朝 ZF 随时有可能审查或者封禁个人站点，觉得还是算了吧（P.S. 国内用户的 iCloud 数据二月底就要移交到境内运营商的服务器上了）。如果用 WordPress 的话，可以考虑国外服务商 <a href="https://sg.godaddy.com/zh/" target="_blank" rel="noopener">GoDaddy</a> 提供的域名注册和虚拟主机服务。</p>
 <h2 id="ToDo-List"><a href="#ToDo-List" class="headerlink" title="ToDo List"></a>ToDo List</h2><p>作为一个一心想当 designer 的野生 coder，今后在这个小小的地方分享的内容当然也不仅限于编程开发等技术（毕竟没什么拿得出手的技术 ==），大概平面设计、UI/UX 设计、Web 开发、<del>机器学习</del>、<del>数据抓取</del>、<del>数据分析</del>、艺术 &amp; 文化、ACG 以及日本語等等都会或多或少有所涉及吧，毕竟“吾生也有涯，而知也无涯”，在有限的时间里要努力的还有很多。</p>
@@ -784,6 +784,8 @@
 
 
 
+  
+
 
 
 
@@ -810,6 +812,11 @@
   
   
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
   
 
   
