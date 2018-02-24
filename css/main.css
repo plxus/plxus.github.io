@@ -1844,7 +1844,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffff16;
+  background: #a741c1;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2973,6 +2973,9 @@ body {
   padding: 50px 40px;
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
 }
+#posts > article + article .post-block {
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
+}
 .post-button {
   margin-top: 30px;
 }
@@ -3014,6 +3017,10 @@ body {
 }
 .post-copyright {
   border-left-color: #78909c;
+}
+.post-nav {
+  margin-top: 30px;
+  padding-top: 10px;
 }
 .pagination {
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
