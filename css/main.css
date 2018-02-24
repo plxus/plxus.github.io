@@ -1844,7 +1844,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #2aff30;
+  background: #3cff6f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3016,7 +3016,10 @@ body {
   border-bottom: none;
 }
 .post-copyright {
-  border-left-color: #78909c;
+  border-left: none;
+  padding: 0;
+  padding-top: 30px;
+  border-top: 1px dotted #eee;
 }
 .post-nav {
   margin-top: 30px;
