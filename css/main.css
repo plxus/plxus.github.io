@@ -1844,7 +1844,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #9e401d;
+  background: #ffff0a;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2978,6 +2978,33 @@ body {
   margin-top: 20px;
   margin-bottom: 10px;
 }
+.back-to-top {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+.sidebar-nav {
+  font-weight: bold;
+}
+.sidebar-nav .sidebar-nav-active:hover {
+  color: #1976d2;
+}
+.sidebar-nav li:hover {
+  color: #1976d2;
+}
+.sidebar-nav .sidebar-nav-active {
+  color: #1976d2;
+  border-bottom-color: #1976d2;
+}
+.post-toc .nav .active-current > a {
+  color: #1976d2;
+}
+.post-toc .nav .active-current > a:hover {
+  color: #1976d2;
+}
+.post-toc .nav .active > a {
+  color: #1976d2;
+  border-bottom-color: #1976d2;
+}
 .post-block {
   padding: 50px 40px;
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
@@ -3051,6 +3078,13 @@ body {
   .comments {
     padding: 40px 14px 14px 14px;
   }
+}
+.v .vbtn {
+  color: #555;
+  border-radius: 3px !important;
+}
+.v .vlist .vcard section .vfooter .vat {
+  color: #708090 !important;
 }
 .sidebar-position-right .footer-inner {
   padding-right: 0;
