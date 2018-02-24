@@ -445,7 +445,7 @@ body {
 .header-inner {
   margin: 0 auto;
   padding: 100px 0 70px;
-  width: calc(100% - 252px);
+  width: calc(100% - 272px);
 }
 @media (min-width: 1600px) {
   .container .header-inner {
@@ -457,7 +457,7 @@ body {
 }
 .main-inner {
   margin: 0 auto;
-  width: calc(100% - 252px);
+  width: calc(100% - 272px);
 }
 @media (min-width: 1600px) {
   .container .main-inner {
@@ -474,7 +474,7 @@ body {
 .footer-inner {
   box-sizing: border-box;
   margin: 20px auto;
-  width: calc(100% - 252px);
+  width: calc(100% - 272px);
 }
 @media (min-width: 1600px) {
   .container .footer-inner {
@@ -1844,7 +1844,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #95d0ff;
+  background: #9e401d;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2403,14 +2403,14 @@ ul.breadcrumb li+li:last-child {
   top: 0;
   overflow: hidden;
   padding: 0;
-  width: 240px;
+  width: 260px;
   background: #fff;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
   border-radius: initial;
 }
 @media (min-width: 1600px) {
   .container .header-inner {
-    width: 240px;
+    width: 260px;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
@@ -2462,7 +2462,7 @@ ul.breadcrumb li+li:last-child {
   float: right;
   box-sizing: border-box;
   padding: 40px;
-  width: calc(100% - 252px);
+  width: calc(100% - 272px);
   background: #fff;
   min-height: 700px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
@@ -2487,7 +2487,7 @@ ul.breadcrumb li+li:last-child {
   position: static;
   float: left;
   margin-top: 300px;
-  width: 240px;
+  width: 260px;
   background: #eee;
   box-shadow: none;
 }
@@ -2647,7 +2647,7 @@ ul.breadcrumb li+li:last-child {
 }
 .sidebar-inner {
   box-sizing: border-box;
-  width: 240px;
+  width: 260px;
   color: #555;
   background: #fff;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12), 0 -1px 0.5px 0 rgba(0,0,0,0.09);
@@ -2938,13 +2938,16 @@ body {
 }
 .headband {
   height: 0px;
-  background-color: #333;
+  background-color: #282c34;
 }
 .header-inner {
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
 }
 .site-meta {
-  background-color: #333;
+  background-color: #282c34;
+}
+.site-title {
+  font-size: 21px;
 }
 .menu .menu-item .badge {
   text-shadow: none;
@@ -2955,9 +2958,11 @@ body {
   top: 50% !important;
 }
 .sidebar-inner {
+  padding: 20px;
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
 }
 .site-author-image {
+  margin-top: 10px;
   margin-bottom: 10px;
   padding: 3px;
   border: 1px solid #e0e0e0;
@@ -2965,7 +2970,11 @@ body {
 .site-author-name {
   font-size: 15px;
 }
+.cc-license {
+  margin-top: 20px;
+}
 .links-of-blogroll-title {
+  font-size: 15px;
   margin-top: 20px;
   margin-bottom: 10px;
 }
