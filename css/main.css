@@ -1844,7 +1844,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #03ffff;
+  background: #82ffa6;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2932,6 +2932,7 @@ ul.breadcrumb li+li:last-child {
 }
 body {
   font-size: 15px;
+  background-color: rgba(238,238,238,0.8);
 }
 ::selection {
   background-color: #424242;
