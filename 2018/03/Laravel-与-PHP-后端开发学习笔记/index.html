@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN,en,default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#333">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#333">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.0.6',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="最近一直在忙于毕业设计（的写代码和改 bug 工作），目前开发任务暂时告一段落。在毕设项目的信息系统开发中，后端的 PHP 框架选用了目前最流行的 Laravel，从截止到目前的实现情况来看，其功能确实相当强大，不仅能实现基本的 MVC 架构的相关操作，还可以通过安装扩展包实现诸如数据库批量填充假数据等功能，也能够使用 Voyager 这样强大的后台管理插件来快速生成网站的后台管理面板。当然整个过">
+<meta name="keywords" content="教程,Web,Laravel,PHP,后端开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel 与 PHP 后端开发学习笔记">
+<meta property="og:url" content="https://plxus.github.io/2018/03/Laravel-与-PHP-后端开发学习笔记/index.html">
+<meta property="og:site_name" content="plusxu.blog()">
+<meta property="og:description" content="最近一直在忙于毕业设计（的写代码和改 bug 工作），目前开发任务暂时告一段落。在毕设项目的信息系统开发中，后端的 PHP 框架选用了目前最流行的 Laravel，从截止到目前的实现情况来看，其功能确实相当强大，不仅能实现基本的 MVC 架构的相关操作，还可以通过安装扩展包实现诸如数据库批量填充假数据等功能，也能够使用 Voyager 这样强大的后台管理插件来快速生成网站的后台管理面板。当然整个过">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-03-24T13:22:58.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Laravel 与 PHP 后端开发学习笔记">
+<meta name="twitter:description" content="最近一直在忙于毕业设计（的写代码和改 bug 工作），目前开发任务暂时告一段落。在毕设项目的信息系统开发中，后端的 PHP 框架选用了目前最流行的 Laravel，从截止到目前的实现情况来看，其功能确实相当强大，不仅能实现基本的 MVC 架构的相关操作，还可以通过安装扩展包实现诸如数据库批量填充假数据等功能，也能够使用 Voyager 这样强大的后台管理插件来快速生成网站的后台管理面板。当然整个过">
+
+
+
+
+
+
+  <link rel="canonical" href="https://plxus.github.io/2018/03/Laravel-与-PHP-后端开发学习笔记/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Laravel 与 PHP 后端开发学习笔记 | plusxu.blog()</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">plusxu.blog()</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">理易昭灼，道且惚恍</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th-list"></i> <br />分类<span class="badge">2</span>
+      </a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">7</span>
+      </a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">2</span>
+      </a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-info-circle"></i> <br />关于</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://plxus.github.io/2018/03/Laravel-与-PHP-后端开发学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Plus Xu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar-xblog.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="plusxu.blog()">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Laravel 与 PHP 后端开发学习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T00:00:00+08:00">2018-03-24</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程开发/" itemprop="url" rel="index"><span itemprop="name">编程开发</span></a></span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程开发/Web/" itemprop="url" rel="index"><span itemprop="name">Web</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/Laravel-与-PHP-后端开发学习笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/Laravel-与-PHP-后端开发学习笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近一直在忙于毕业设计（的写代码和改 bug 工作），目前开发任务暂时告一段落。在毕设项目的信息系统开发中，后端的 PHP 框架选用了目前最流行的 <a href="https://laravel.com/" target="_blank" rel="noopener">Laravel</a>，从截止到目前的实现情况来看，其功能确实相当强大，不仅能实现基本的 MVC 架构的相关操作，还可以通过安装扩展包实现诸如数据库批量填充假数据等功能，也能够使用 <a href="https://laravelvoyager.com/" target="_blank" rel="noopener">Voyager</a> 这样强大的后台管理插件来快速生成网站的后台管理面板。当然整个过程中也踩了不少奇奇怪怪的坑，并且用各种奇奇怪的方式解决了，哎自己选的框架含着泪也要用下去……总而言之打算在这里记录一下项目开工以来，用到的各种技术方法和相关教程笔记。（不定期更新中）</p>
+<a id="more"></a>
+<h2 id="毕设项目开发技术总结"><a href="#毕设项目开发技术总结" class="headerlink" title="毕设项目开发技术总结"></a>毕设项目开发技术总结</h2><p><strong>前端：</strong></p>
+<ul>
+<li>Bootstrap 3</li>
+<li>Valine - 前端评论系统</li>
+<li>jQuery File Upload - 文件上传插件</li>
+<li>taggle.js - 用于添加标签的表单控件</li>
+<li>holmes.js - 根据搜索框输入的关键词显示页面中的特定内容</li>
+<li>Font Awesome</li>
+</ul>
+<p><strong>后端：</strong></p>
+<ul>
+<li>Laravel</li>
+<li>Laravel 的一些扩展包，如 Faker</li>
+<li>Voyager - Laravel 后台管理框架</li>
+<li>MAMP 集成开发环境</li>
+</ul>
+<p><strong>编辑器：</strong></p>
+<ul>
+<li>Atom</li>
+</ul>
+<h2 id="《Laravel-教程-Web-开发实战入门（Laravel-5-5）》学习笔记"><a href="#《Laravel-教程-Web-开发实战入门（Laravel-5-5）》学习笔记" class="headerlink" title="《Laravel 教程 - Web 开发实战入门（Laravel 5.5）》学习笔记"></a>《Laravel 教程 - Web 开发实战入门（Laravel 5.5）》学习笔记</h2><blockquote>
+<p>原教程见 <a href="https://laravel-china.org/courses/laravel-essential-training-5.5" target="_blank" rel="noopener">Laravel 教程 - Web 开发实战入门 ( Laravel 5.5 )</a>，由 Laravel 中国社区提供。</p>
+</blockquote>
+<h3 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h3><p>MVC 是 Model（模型）、View（视图）和 Controller（控制器）三个单词的首字母缩写，是一种软件架构设计模式。</p>
+<ol>
+<li>最上面的一层，是直接面向最终用户的『视图层』（View）。它是提供给用户的操作界面，是程序的外壳。</li>
+<li>最底下的一层，是核心的『数据层』（Model），也就是程序需要操作的数据或信息。</li>
+<li>中间的一层，就是『控制层』（Controller），它负责根据用户从『视图层』输入的指令，选取『数据层』中的数据，然后对其进行相应的操作，产生最终结果。</li>
+</ol>
+<h3 id="Laravel-开发说明"><a href="#Laravel-开发说明" class="headerlink" title="Laravel 开发说明"></a>Laravel 开发说明</h3><ul>
+<li>实际应用的开发过程中，应用一般会运行在以下几种环境中：<ul>
+<li>本地开发环境</li>
+<li>测试环境</li>
+<li>生产环境</li>
+</ul>
+</li>
+<li>在完成对<code>.env</code> 文件的设置后，我们可以通过传递参数给 <code>getenv</code> 方法来获取到 <code>.env</code> 文件中指定的属性值，如调用 <code>getenv(&#39;APP_ENV&#39;)</code> 将返回 <code>local</code>。</li>
+</ul>
+<h3 id="构建页面"><a href="#构建页面" class="headerlink" title="构建页面"></a>构建页面</h3><h4 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h4><ul>
+<li><p>当用户在查看一个网页时，一个完整的访问过程如下：</p>
+<ol>
+<li>打开浏览器在地址栏输入 URL 并访问；</li>
+<li>路由将 URL 请求映射到指定控制器上；</li>
+<li>控制器收到请求，开始进行处理。如果视图需要动态数据进行渲染，则控制器会开始从模型中读取数据；</li>
+<li>数据读取完毕，将数据传送给视图进行渲染；</li>
+<li>视图渲染完成，在浏览器上呈现出完整页面；</li>
+</ol>
+</li>
+<li><p>在 Laravel 开发中，使用路由来定义 URL 和 URL 的请求方式，再将该 URL 分配到相对应的控制器动作中进行处理。接下来要构建三个静态页面分别是主页、帮助页、关于页。因此我们需要为路由指定好三个不同的 URL。</p>
+</li>
+<li><p>进入<code>routes/web.php</code>文件，添加代码<code>Route::get(&#39;/&#39;, &#39;StaticPagesController@home&#39;);</code> 为 get 方法传递了两个参数，第一个参数指明了 URL，第二个参数指明了处理该 URL 的控制器动作。get 表明这个路由将会响应 GET 请求，并将请求映射到指定的控制器动作上。例如我们向 <a href="http://sample.test/" target="_blank" rel="noopener">http://sample.test/</a> 发出了一个请求，则该请求将会由 <code>StaticPagesController</code> 的 <code>home</code> 方法进行处理。</p>
+</li>
+<li><p>在 Laravel 中较为常用的几个基本的 HTTP 操作分别为 GET、POST、PATCH、DELETE。</p>
+<ul>
+<li>GET 常用于页面读取</li>
+<li>POST 常用于数据提交</li>
+<li>PATCH 常用于数据更新</li>
+<li>DELETE 常用于数据删除</li>
+</ul>
+<p>在这四个动作中，PATCH 和 DELETE 是不被浏览器所支持的，但我们可以通过在提交表单中做一些手脚，让服务器以为这两个动作是从浏览器中发出的一样。</p>
+</li>
+</ul>
+<h4 id="生成控制器"><a href="#生成控制器" class="headerlink" title="生成控制器"></a>生成控制器</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ php artisan make:controller controller_name</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>控制器的路径：app/Http/Controllers/。</p>
+</li>
+<li><p>控制器文件的内容：</p>
+<p><code>namespace</code> 是命名空间。</p>
+<p>使用 <code>use</code> 来引用在 PHP 文件中要使用的类，引用之后便可以对其进行调用。</p>
+<p>在静态页面控制器中定义了一个 <code>StaticPagesController</code> 类，这个类继承了父类 <code>App\Http\Controllers\Controller</code>，这意味着你可以在 <code>StaticPagesController</code> 类中任意使用父类中除私密方法外的其它方法。</p>
+</li>
+</ul>
+<h4 id="添加静态页面视图"><a href="#添加静态页面视图" class="headerlink" title="添加静态页面视图"></a>添加静态页面视图</h4><p>要在控制器中指定渲染某个视图，则需要使用到 <code>view</code> 方法，<code>view</code> 方法接收两个参数，第一个参数是视图的路径名称，第二个参数是与视图绑定的数据，第二个参数为可选参数。</p>
+<p>默认情况下，所有的视图文件都存放在 resources/views 文件夹下。</p>
+<p>在控制器中指定渲染的视图之后，接下来便是对视图进行构建了，我们需要在 <code>resources/views</code> 中新增三个视图。</p>
+<ul>
+<li><p>Blade 模板：</p>
+<p>Blade 是 Laravel 中提供的一套模板引擎，在 Blade 视图中我们可以使用 Laravel 为这套引擎定义的一些默认方法，并且完全兼容 PHP 语法。在项目运行时，Laravel 会把所有的 Blade 视图进行编译缓存成普通的 PHP 代码。</p>
+</li>
+<li><p>通用视图：</p>
+<p>我们给应用创建了一个 default 视图，并将其放在 <code>layouts</code> 文件夹中，default 视图将作为整个应用的基础视图。实际上你只要保证视图文件被放置在 <code>resources/views</code> 目录下即可，Laravel 对视图的文件夹和文件命名并没有限制，将 default 文件放在 <code>layouts</code>文件下，只是为了让应用的目录结构让人更好理解。</p>
+<p><code>@yield(&#39;content&#39;)</code>表示占位区块 <code>content</code> ， <code>content</code> 区块的内容将由继承自 default 视图的子视图定义。<code>@yield()</code> 可以有两个参数，第一个参数是区块名称，第二个参数是默认值。</p>
+<p>Laravel 的 Blade 模板支持继承，这意味多个子视图可以共用父视图提供的视图模板。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@extends(&apos;layouts.default&apos;)</span><br><span class="line">@section(&apos;content&apos;)</span><br><span class="line">  &lt;h1&gt;主页&lt;/h1&gt;</span><br><span class="line">@stop</span><br></pre></td></tr></table></figure>
+<p>使用 <code>@extends</code> 并通过传参来继承父视图 <code>layouts/default.blade.php</code> 的视图模板。使用 <code>@section</code> 和 <code>@stop</code> 代码来填充父视图的 <code>content</code> 区块，所有包含在 <code>@section</code> 和 <code>@stop</code> 中的代码都将被插入到父视图的 <code>content</code> 区块。</p>
+<p> <code>@section()</code> 可以有两个参数，第一个参数是区块名称，第二个参数是区块内容，当第二个参数被制定时，不需要通过 <code>@stop</code> 定界。</p>
+</li>
+</ul>
+<h4 id="Artisan-命令"><a href="#Artisan-命令" class="headerlink" title="Artisan 命令"></a>Artisan 命令</h4><p>Artisan 是 Laravel 的命令行接口，它提供了非常多的命令来帮助我们开发 Laravel 应用。前面我们已使用过 Artisan 命令来生成应用的 App Key 和控制器。在本教程中，我们会用到以下 Artisan 命令。</p>
+<p>使用 <code>$ php artisan list</code> 来查看所有可用的 Artisan 命令。使用 <code>$ php artisan help command_name</code> 来查看各个 Artisan 命令的帮助界面。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">php artisan key:generate</td>
+<td>生成 App Key</td>
+</tr>
+<tr>
+<td style="text-align:left">php artisan make:controller</td>
+<td>生成控制器</td>
+</tr>
+<tr>
+<td style="text-align:left">php artisan make:model</td>
+<td>生成模型</td>
+</tr>
+<tr>
+<td style="text-align:left">php artisan make:policy</td>
+<td>生成授权策略</td>
+</tr>
+<tr>
+<td style="text-align:left">php artisan make:seeder</td>
+<td>生成 Seeder 文件</td>
+</tr>
+<tr>
+<td style="text-align:left">php artisan migrate</td>
+<td>执行迁移</td>
+</tr>
+<tr>
+<td style="text-align:left">php artisan migrate:rollback</td>
+<td>回滚迁移</td>
+</tr>
+<tr>
+<td style="text-align:left">php artisan migrate:refresh</td>
+<td>重置数据库</td>
+</tr>
+<tr>
+<td style="text-align:left">php artisan db:seed</td>
+<td>填充数据库</td>
+</tr>
+<tr>
+<td style="text-align:left">php artisan tinker</td>
+<td>进入 tinker 环境</td>
+</tr>
+<tr>
+<td style="text-align:left">php artisan route:list</td>
+<td>查看路由列表</td>
+</tr>
+</tbody>
+</table>
+<h3 id="优化页面"><a href="#优化页面" class="headerlink" title="优化页面"></a>优化页面</h3><h4 id="样式美化"><a href="#样式美化" class="headerlink" title="样式美化"></a>样式美化</h4><ul>
+<li><p>Laravel 在运行时是以 <code>public</code> 文件夹为根目录。</p>
+</li>
+<li><p>Laravel 项目默认集成了 Bootstrap 前端框架，但是还需要做一定配置之后才能够正常使用。Bootstrap 是以 <a href="https://github.com/npm/npm" target="_blank" rel="noopener">NPM</a> 扩展包的形式集成到 Laravel 项目中的，NPM 是 Node.js（一个基于 Google V8 引擎的 JavaScript 运行环境）的包管理和分发工具。</p>
+</li>
+<li><p>Laravel 默认集成了一些 NPM 扩展包，这些扩展包，为 Laravel 提供了一套完整的前端工作流。重点看以下几个：</p>
+<ul>
+<li>bootstrap-sass —— Bootstrap NPM 扩展包；</li>
+<li>jquery —— jQuery NPM 扩展包；</li>
+<li>laravel-mix —— 由 Laravel 官方提供的静态资源管理工具；</li>
+<li>vue —— VUE.js 前端框架；</li>
+</ul>
+</li>
+<li><p><del>使用Yarn <a href="https://yarnpkg.com/en/docs/install" target="_blank" rel="noopener">https://yarnpkg.com/en/docs/install</a> 安装bootstrap扩展包：</del>（未使用）</p>
+<ul>
+<li><p>在项目根目录下运行以下命令进行安装：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ yarn install --no-bin-links</span><br><span class="line">$ yarn add cross-env</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>安装淘宝提供的 cnpm。之后进入项目根目录，使用<code>cnpm install</code>命令安装bootstrap扩展包。</p>
+</li>
+<li><p>对 Laravel 默认生成的 <code>app.scss</code> 文件进行编辑，删除此文件里的所有内容，只留下面一行，导入 Bootstrap：</p>
+<p><em>resources/assets/sass/app.scss</em></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// Bootstrap</span><br><span class="line">@import &quot;~bootstrap-sass/assets/stylesheets/bootstrap&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 Bootstrap 导入成功之后，需要使用以下命令来将 <code>.scss</code> 文件编译为 <code>.css</code> 才能正常使用，在项目根目录运行编译命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm run dev</span><br></pre></td></tr></table></figure>
+<p>也可以通过下面的命令，在每次检测到 <code>.scss</code> 文件发生更改时，自动将其编译为 <code>.css</code> 文件：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm run watch-poll</span><br></pre></td></tr></table></figure>
+<p>所有编译后的资源文件都被存放在 <code>public</code> 文件夹中，可以在 <code>public/css</code> 文件夹中看到刚刚编译成功之后的文件。</p>
+</li>
+<li><p>也可以直接在 <code>&lt;link&gt;</code> 元素中引入 CSS 文件。</p>
+</li>
+</ul>
+<h4 id="Laravel-前端工作流"><a href="#Laravel-前端工作流" class="headerlink" title="Laravel 前端工作流"></a>Laravel 前端工作流</h4><ul>
+<li><p>Sass 是一种可用于编写 CSS 的语言。可使用 <code>@import</code> 来导入其它的样式文件，支持变量，选择器嵌套，引用父选择器。</p>
+</li>
+<li><p>Laravel Mix 是一款前端任务自动化管理工具，使用了工作流的模式对制定好的任务依次执行。Mix 提供了简洁流畅的 API，让你能够为你的 Laravel 应用定义 Webpack 编译任务。Mix 支持许多常见的 CSS 与 JavaScript 预处理器，通过简单的调用可以管理前端资源。我们可以在 webpack.mix.js 文件中制定一些如资源文件的编译、压缩等任务。Laravel 已默认为我们生成了 webpack.mix.js 文件，并集成了 <code>laravel-mix</code> 模块。</p>
+<p>要使用 Mix，需要运行命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ npm run watch-poll</span><br></pre></td></tr></table></figure>
+<p><code>watch-poll</code> 会在你的终端里持续运行，监控 <code>resources</code> 文件夹下的资源文件是否有发生改变。在 <code>watch-poll</code> 命令运行的情况下，一旦资源文件发生变化，Webpack 会自动重新编译。</p>
+</li>
+</ul>
+<h4 id="局部视图"><a href="#局部视图" class="headerlink" title="局部视图"></a>局部视图</h4><ul>
+<li>局部视图文件名一般以下划线 _ 开头。一般将网页的头部和底部设置为局部视图。</li>
+<li>在完成头部视图和底部视图的定义后，接下来便可以在 default 视图中引用这两个视图，使用 <code>@include</code> 命令引入视图文件。<code>@include</code> 是 Blade 提供的视图引用方法，可通过传参一个具体的文件路径名称来引用视图。</li>
+</ul>
+<h4 id="布局中的链接"><a href="#布局中的链接" class="headerlink" title="布局中的链接"></a>布局中的链接</h4><ul>
+<li><code></code> 是在 HTML 中嵌入 PHP 代码的 Blade 语法标识符，表示包含在该区块内的代码都将使用 PHP 来编译运行。<code>route()</code> 方法由 Laravel 提供，通过传递一个具体的路由名称来生成完整的 URL。</li>
+<li>在 Laravel 中，我们可以通过在路由后面链式调用 <code>name</code> 方法来为路由指定名称。</li>
+<li><code>route(&#39;name&#39;)</code> 为我们生成了完整的 URL 地址，这样当我们需要对生成的 URL 进行更改时，我们只需要改动路由文件即可。</li>
+</ul>
+<h4 id="创建用户注册页面"><a href="#创建用户注册页面" class="headerlink" title="创建用户注册页面"></a>创建用户注册页面</h4><ul>
+<li>定义 <code>signup</code> 路由，把 signup 的路由请求交给用户控制器 <code>UsersController</code> 来处理。<code>Route::get(&#39;/signup&#39;, &#39;UsersController@create&#39;)-&gt;name(&#39;signup&#39;);</code></li>
+<li>生成用户控制器：<code>php artisan make:controller UsersController</code>。将用户注册页面的请求处理指定给用户控制器的 <code>create</code> 方法进行处理，返回值为 create 视图。</li>
+<li>创建注册页面视图 <code>users/create.blade.php</code>。</li>
+</ul>
+<h3 id="用户模型"><a href="#用户模型" class="headerlink" title="用户模型"></a>用户模型</h3><p>Model（模型）与数据库交互。本章我们将构建一个基本的用户模型来实现用户数据的存储，并了解 Laravel 如何对模型对象进行增删改查操作。后面我们还会在此用户模型基础上添加用户注册和登录功能，并对用户身份进行权限认证，让管理员用户可以对用户进行删除操作。接着我们还会构建一套用户账号激活和密码找回系统，只有成功进行邮箱激活的用户才能在网站上进行登录，激活成功后的用户如果出现密码丢失的情况，可以使用已认证的邮箱进行密码找回。</p>
+<h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><ul>
+<li>Eloquent ORM：在接下来几章要实现的用户注册功能需要用到数据库来进行数据存储，用于放置用户的基本信息。在这期间，还需要用到数据模型- Model，利用 Laravel 提供的 <a href="http://d.laravel-china.org/docs/5.5/eloquent" target="_blank" rel="noopener">Eloquent ORM</a> 跟数据库进行交互，实现用户数据的增删改查操作。Eloquent 提供了简洁优雅的 ActiveRecord 实现来跟数据库进行交互。Active Record 是一种领域模型模式，其特点是<strong>一个模型类对应关系型数据库中的一个表，模型类的一个实例对应表中的一行记录</strong>。Active Record 最大优点是允许我们简单, 直观地操作数据层。</li>
+</ul>
+<h4 id="数据库迁移"><a href="#数据库迁移" class="headerlink" title="数据库迁移"></a>数据库迁移</h4><ul>
+<li><p>Laravel 使用 <a href="http://d.laravel-china.org/docs/5.5/migrations" target="_blank" rel="noopener">数据库迁移</a> 来管理数据库表结构，迁移就像是数据库中的版本控制，它让团队成员之间能够轻松的修改跟共享应用程序的数据库结构，而不用担心并行更新数据结构而造成冲突等问题。同时也让 Laravel 项目的部署变得很方便。不仅如此，Migration 建表要比直接手动创建表或者 <code>.sql</code> 文件具备额外的管理数据库的功能，如：回滚/重置/更新等。Migration 的建表方法大部分情况下能兼容 MySQL, PostgreSQL, SQLite 甚至是 Oracle 等主流数据库系统。</p>
+</li>
+<li><p>所有创建的迁移文件都被放在 <code>database/migrations</code> 文件夹里。</p>
+</li>
+<li><p>创建用户迁移文件里（<em>database/migrations/2014_10_12_000000_create_users_table.php</em>）包含的内容：定义了一个 <code>CreateUsersTable</code> 类，并继承自 <code>Migration</code> 基类。CreateUsersTable 有两个方法 <code>up</code> 和 <code>down</code> ：</p>
+<ul>
+<li>当我们运行迁移时，<code>up</code> 方法会被调用；</li>
+<li>当我们回滚迁移时，<code>down</code> 方法会被调用。</li>
+</ul>
+</li>
+<li><p>在 <code>up</code> 方法里面，我们通过调用 <code>Schema</code> 类的 <code>create</code> 方法来创建 <code>users</code> 表。<code>create</code> 方法会接收两个参数：一个是数据表的名称，另一个则是接收 <code>$table</code>（Blueprint 实例）的闭包。</p>
+</li>
+<li><p>若要了解更多 $table 的可用方法，可查阅 <a href="http://d.laravel-china.org/docs/5.5/migrations#creating-tables" target="_blank" rel="noopener">官方文档</a>。</p>
+</li>
+<li><p>删除 migration 迁移文件后，建议执行以下命令，以免 migrate 运行迁移时报错：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">composer dump-autoload</span><br><span class="line">composer update</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="查看数据库表"><a href="#查看数据库表" class="headerlink" title="查看数据库表"></a>查看数据库表</h4><ul>
+<li><p>MAMP/XAMPP 运行 <code>php artisan migrate</code>报错。解决方法：在 config/database.php 中添加 unix_socket 路径，MAMP为 <code>/Applications/MAMP/tmp/mysql/mysql.sock</code>。另外，.env 和 database.php 文件中的”host” 设置为 localhost。</p>
+</li>
+<li><p>MAMP/XAMPP 运行 <code>php artisan migrate</code>报错：字符串过长。解决方法：edit your <code>AppServiceProvider.php</code> file and inside the boot method set a default string length:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">use Illuminate\Support\Facades\Schema;</span><br><span class="line"></span><br><span class="line">function boot()</span><br><span class="line">&#123;</span><br><span class="line">    Schema::defaultStringLength(191);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MAMP/XAMPP 运行 <code>php artisan migrate</code>报错：MySQL 执行安全模式检查的问题。解决方法：在 laravel的 config/database.php 的mysql选项配置了严格模式默认为true，修改为false。</p>
+</li>
+<li><p>数据库迁移：</p>
+<p>运行 <code>php artisan migrate</code> 命令。注：我们一开始在创建 <code>sample</code> 项目时，已经为其创建了数据库，并在 <code>.env</code> 文件中做了配置，所以这里会直接使用这些数据库设置。</p>
+<p>生成的 <code>migrations</code> 表是在我们在第一次执行 <code>artisan migrate</code> 命令时生成的，其作用是用来做迁移版本的记录。</p>
+</li>
+<li><p>数据库回滚：</p>
+<p>运行 <code>php artisan migrate:rollback</code> 命令。</p>
+</li>
+</ul>
+<h4 id="模型文件"><a href="#模型文件" class="headerlink" title="模型文件"></a>模型文件</h4><ul>
+<li><p>用户模型：<em>app/User.php</em></p>
+<p>用户模型中， <code>Notifiable</code> 是消息通知相关功能引用，<code>Authenticatable</code> 是授权相关功能的引用。接下来我们主要将精力放在用户模型中定义的三个属性 <code>table</code>, <code>fillable</code>, <code>hidden</code> 上。需要在 Eloquent 模型中借助对 <code>table</code> 属性的定义，来指明要进行数据库交互的数据库表名称，在用户模型中，我们对应要交互的数据库表为 <code>users</code>。</p>
+</li>
+<li><p>Article （文章）模型的例子：</p>
+<p>模型文件可通过多种方式进行创建，一般情况下，如果要自己手动创建一个模型文件，最简单的方式是通过 <code>make:model</code> 来创建。模型类名称使用 单数形式来命名：<code>php artisan make:model Article</code>。</p>
+<p>同时创建迁移文件：如果需要在创建模型的同时顺便创建数据库迁移，可以使用 <code>--migration</code> 或 <code>-m</code> 选项。</p>
+</li>
+<li><p><strong>Laravel 使用 Eloquent 模型与数据库交互。一般每个模型对应一个数据库迁移文件。</strong></p>
+</li>
+<li><p>Eloquent 数据模型：</p>
+<p>在该文件中，Eloquent Article 模型默认情况下会使用类的「下划线命名法」与「复数形式名称」来作为数据表的名称生成规则。因此 Eloquent 将会假设 Article 模型被存储记录在 articles 数据表中。如果你需要指定自己的数据表，则可以通过 <code>table</code> 属性来定义：<code>protected $table = &#39;my_articles&#39;;</code>。</p>
+</li>
+</ul>
+<h4 id="创建用户对象"><a href="#创建用户对象" class="headerlink" title="创建用户对象"></a>创建用户对象</h4><ul>
+<li>使用 Eloquent 模型来创建一个用户对象，并将该用户对象存储到数据库。虽然我们现在还没有用户注册表单，但是通过 Laravel 提供的 Tinker 环境可以让我们完成对用户对象创建。Tinker 是一个 REPL (read-eval-print-loop)，REPL 指的是一个简单的、可交互式的编程环境，通过执行用户输入的命令，并将执行结果直接打印到命令行界面上来完成整个操作。</li>
+<li>进入Tinker 环境：<code>php artisan tinker</code>。</li>
+<li>创建一个用户对象：<code>&gt;&gt;&gt; App\User::create([&#39;name&#39;=&gt;&#39;Aufree&#39;, &#39;email&#39;=&gt;&#39;aufree@yousails.com&#39;,&#39;password&#39;=&gt;bcrypt(&#39;password&#39;)])</code></li>
+<li>使用 Eloquent 模型提供的 <code>create</code> 方法，通过传入一个关联数组来新建一个用户对象。在我们对用户的 <code>password</code> 进行赋值时，调用了一个叫 <code>bcrypt</code> 的方法，将 <code>password</code>的值进行加密。</li>
+</ul>
+<h4 id="查找用户对象"><a href="#查找用户对象" class="headerlink" title="查找用户对象"></a>查找用户对象</h4><p>示例：</p>
+<ul>
+<li><p>当我们要查找一个 id 为 1 的用户时，可以使用下面这种方法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; User::find(1)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用 all 方法取出所有的用户数据：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; User::all()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="更新用户对象"><a href="#更新用户对象" class="headerlink" title="更新用户对象"></a>更新用户对象</h4><p>有两种方式可以完成用户的更新操作：第一种是通过给用户对象属性进行赋值，赋值成功后再调用 <code>save</code> 方法进行保存更新；第二种则是直接调用 <code>update</code> 方法进行更新。较为常用的是第二种更新方式。</p>
+<ul>
+<li><p>通过 update 方法更新：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt; $user-&gt;update([&apos;name&apos;=&gt;&apos;PlusXu&apos;])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Eloquent 除 <code>create</code>，<code>update</code> 之外还提供了很多其它的方法来方便我们跟数据库进行交互，后面的教程中会讲到更多关于 Eloquent 模型的基本使用，也可以通过查阅 <a href="http://d.laravel-china.org/docs/5.5/eloquent" target="_blank" rel="noopener">相关文档</a> 来进行深入学习。</p>
+<h3 id="用户注册"><a href="#用户注册" class="headerlink" title="用户注册"></a>用户注册</h3><ul>
+<li><p>Laravel 遵从 RESTful 架构的设计原则，将数据看做一个资源，由 URI 来指定资源。对资源进行的获取、创建、修改和删除操作，分别对应 HTTP 协议提供的 GET、POST、PATCH 和 DELETE 方法。当我们要查看一个 id 为 1 的用户时，需要向 <code>/users/1</code> 地址发送一个 GET 请求，当 Laravel 的路由接收到该请求时，默认会把该请求传给控制器的 <code>show</code> 方法进行处理。</p>
+</li>
+<li><p>Laravel 为我们提供了 <code>resource</code> 方法来定义用户资源路由。</p>
+<p><code>resource</code> 方法遵从 RESTful 架构为用户资源生成路由。该方法接收两个参数，第一个参数为资源名称，第二个参数为控制器名称。</p>
+</li>
+<li><p>Laravel 会自动解析定义在控制器方法（变量名匹配路由片段）中的 Eloquent 模型类型声明。在上面代码中，由于 <code>show()</code> 方法传参时声明了类型 —— Eloquent 模型 <code>User</code>，对应的变量名 <code>$user</code> 会匹配路由片段中的 <code>{user}</code>，这样，Laravel 会自动注入与请求 URI 中传入的 ID 对应的用户模型实例。同时满足以下两种情况，此功能即会自动启用：</p>
+<ol>
+<li>路由声明时必须使用 Eloquent 模型的单数小写格式来作为路由片段参数，User 对应 <code>{user}</code>。</li>
+<li>控制器方法传参中必须包含对应的 Eloquent 模型类型声明，并且是有序的。</li>
+</ol>
+</li>
+<li><p><strong>模型类对应数据表，模型类的实例对应表中的一行记录。</strong></p>
+</li>
+<li><p>用户对象 <code>$user</code> 通过 <a href="http://php.net/manual/zh/function.compact.php" target="_blank" rel="noopener"><code>compact</code></a> 方法转化为一个关联数组，并作为第二个参数传递给 <code>view</code> 方法，将数据与视图进行绑定。<code>show</code> 方法添加完成之后，我们便能在视图中使用 <code>user</code> 变量来访问通过 <code>view</code> 方法传递给视图的用户数据。</p>
+</li>
+<li><p>laravel资源加载路径设置 bug：在路由中定义URL后，CSS/JS 等静态资源文件的相对路径的根目录也会发生改变，导致无法找到相应的资源（404）。解决方法：在相对路径的最前边加上”/“，表示与  <code>public</code> 目录下的 <code>index.php</code> 处于同一路径。</p>
+</li>
+<li><p>数据库重置：运行 <code>migrate:refresh</code> 命令，即可完成数据库的重置操作。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ php artisan migrate:refresh</span><br></pre></td></tr></table></figure>
+<p><code>refresh</code> 的作用是重置数据库并重新运行所有迁移。</p>
+</li>
+</ul>
+<h4 id="资源控制器"><a href="#资源控制器" class="headerlink" title="资源控制器"></a>资源控制器</h4><p>Laravel 资源路由将典型的「CRUD」路由分配给具有单行代码的控制器。比如，创建一个控制器来处理应用保存的「照片」的所有 HTTP 请求。使用 Artisan 命令 <code>make:controller</code> 来快速创建控制器：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">php artisan make:controller PhotoController --resource</span><br></pre></td></tr></table></figure>
+<p>这个命令会生成一个控制器 <code>app/Http/Controllers/PhotoController.php</code>。其中包含了每个可用资源的操作方法。</p>
+<p>接下来，你可以给控制器注册一个资源路由：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Route::resource(&apos;photos&apos;, &apos;PhotoController&apos;);</span><br></pre></td></tr></table></figure>
+<p>这个路由声明创建多个路由来处理资源上的各种行为。生成的控制器为每个行为保留了方法，同时还包括了 处理 HTTP 动作和 URI 的声明注释。</p>
+<ul>
+<li>资源控制器操作处理：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>动作</th>
+<th>URI</th>
+<th>行为</th>
+<th>路由名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET</td>
+<td><code>/photos</code></td>
+<td>index</td>
+<td>photos.index</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/create</code></td>
+<td>create</td>
+<td>photos.create</td>
+</tr>
+<tr>
+<td>POST</td>
+<td><code>/photos</code></td>
+<td>store</td>
+<td>photos.store</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}</code></td>
+<td>show</td>
+<td>photos.show</td>
+</tr>
+<tr>
+<td>GET</td>
+<td><code>/photos/{photo}/edit</code></td>
+<td>edit</td>
+<td>photos.edit</td>
+</tr>
+<tr>
+<td>PUT/PATCH</td>
+<td><code>/photos/{photo}</code></td>
+<td>update</td>
+<td>photos.update</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td><code>/photos/{photo}</code></td>
+<td>destroy</td>
+<td>photos.destroy</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>指定资源模型：</li>
+</ul>
+<p>如果你使用了路由模型绑定，并且想在资源控制器的方法中使用类型提示，你可以在生成控制器的时候使用 <code>--model</code> 选项：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">php artisan make:controller PhotoController --resource --model=Photo</span><br></pre></td></tr></table></figure>
+<ul>
+<li>伪造表单方法：</li>
+</ul>
+<p>因为 HTML 表单不能生成 <code>PUT</code>、 <code>PATCH</code> 或者 <code>DELETE</code> 请求，所以你需要添加一个隐藏的 <code>_method</code> 输入字段来伪造这些 HTTP 动作。辅助函数 <code>method_field</code> 可以帮你创建这个字段：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&#123; method_field(&apos;PUT&apos;) &#125;&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>部分资源路由：</li>
+</ul>
+<p>声明资源路由时，你可以指定控制器处理的部分行为，而不是所有默认的行为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Route::resource(&apos;photo&apos;, &apos;PhotoController&apos;, [&apos;only&apos; =&gt; [</span><br><span class="line">    &apos;index&apos;, &apos;show&apos;</span><br><span class="line">]]);</span><br><span class="line"></span><br><span class="line">Route::resource(&apos;photo&apos;, &apos;PhotoController&apos;, [&apos;except&apos; =&gt; [</span><br><span class="line">    &apos;create&apos;, &apos;store&apos;, &apos;update&apos;, &apos;destroy&apos;</span><br><span class="line">]]);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>API资源路由：</li>
+</ul>
+<p>当声明用于 APIs 的资源路由时，通常需要排除显示 HTML 模板的路由（如 <code>create</code> 和 <code>edit</code> ）。为了方便起见，你可以使用 <code>apiResource</code> 方法自动排除这两个路由：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Route::apiResource(&apos;photo&apos;, &apos;PhotoController&apos;);</span><br></pre></td></tr></table></figure>
+<p>你可以传递一个数组给 <code>apiResources</code> 方法来注册多个API资源控制器：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Route::apiResources([</span><br><span class="line">    &apos;photos&apos; =&gt; &apos;PhotoController&apos;,</span><br><span class="line">    &apos;posts&apos; =&gt; &apos;PostController&apos;</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>命名资源路由：</li>
+</ul>
+<p>默认情况下，所有的资源控制器行为都有一个路由名称。你可以传入 <code>names</code> 数组来覆盖这些名称：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Route::resource(&apos;photo&apos;, &apos;PhotoController&apos;, [&apos;names&apos; =&gt; [</span><br><span class="line">    &apos;create&apos; =&gt; &apos;photo.build&apos;</span><br><span class="line">]]);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>命名资源路由参数：</li>
+</ul>
+<p>默认情况下，<code>Route::resource</code> 会根据资源名称的「单数」形式创建资源路由的路由参数。你可以在选项数组中传入 <code>parameters</code> 参数来轻松地覆盖每个资源。<code>parameters</code> 数组应该是资源名称和参数名称的关联数组：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Route::resource(&apos;user&apos;, &apos;AdminUserController&apos;, [&apos;parameters&apos; =&gt; [</span><br><span class="line">    &apos;user&apos; =&gt; &apos;admin_user&apos;</span><br><span class="line">]]);</span><br></pre></td></tr></table></figure>
+<p>上例将会为资源的 <code>show</code> 路由生成如下的 URI ：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/user/&#123;admin_user&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="用户数据验证"><a href="#用户数据验证" class="headerlink" title="用户数据验证"></a>用户数据验证</h4><ul>
+<li>在实际开发中，我们经常需要对用户输入的数据进行 <a href="http://d.laravel-china.org/docs/5.5/validation" target="_blank" rel="noopener">验证</a>，在验证成功后再将数据存入数据库。在 Laravel 开发中，提供了多种数据验证方式，在本教程中，我们使用其中一种对新手较为友好的验证方式 - <code>validator</code> 来进行讲解。<code>validator</code> 由 <code>App\Http\Controllers\Controller</code> 类中的 <code>ValidatesRequests</code> 进行定义，因此我们可以在所有的控制器中使用 <code>validate</code> 方法来进行数据验证。<code>validate</code> 方法接收两个参数，第一个参数为用户的提交数据，第二个参数为数据的验证规则。</li>
+<li>validate 方法的验证规则：`required（存在性）|min:3|max:50（长度）|email（电子邮件格式）|unique:users（唯一性验证，针对“users”表）|confirmed（密码匹配验证）</li>
+<li>多语言支持：在项目根目录中运行 <code>composer require caouecs/laravel-lang:~3.0</code> 命令。可参考 GitHub 项目地址 <a href="https://github.com/caouecs/Laravel-lang。" target="_blank" rel="noopener">https://github.com/caouecs/Laravel-lang。</a></li>
+</ul>
+<h4 id="注册成功"><a href="#注册成功" class="headerlink" title="注册成功"></a>注册成功</h4><ul>
+<li><p>当用户注册完成，且表单信息验证通过后，我们需要做以下两个操作：</p>
+<ol>
+<li>将用户提交的信息存储到数据库，并重定向到其个人页面；</li>
+<li>在网页顶部位置显示注册成功的提示信息；</li>
+</ol>
+</li>
+<li><p><code>Illuminate\Http\Request</code> 实例参数，我们可以使用该参数来获得用户的所有输入数据。如果我们的表单中包含一个 <code>name</code> 字段，则可以借助 <code>Request</code> 使用下面的这种方式来获取 <code>name</code> 的值：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$name = $request-&gt;name;</span><br></pre></td></tr></table></figure>
+<p>如果需要获取用户输入的所有数据，可使用：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$data = $request-&gt;all();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用户模型 <code>User::create()</code> 创建成功后会返回一个用户对象，并包含新注册用户的所有信息。我们将新注册用户的所有信息赋值给变量 <code>$user</code>，并通过路由跳转来进行数据绑定。</p>
+</li>
+<li><p>由于 HTTP 协议是无状态的，所以 Laravel 提供了一种用于临时保存用户数据的方法 - <a href="http://d.laravel-china.org/docs/5.5/session" target="_blank" rel="noopener">会话</a>（Session），并附带支持多种会话后端驱动，可通过统一的 API 进行使用。</p>
+</li>
+<li><p>我们可以使用 <code>session()</code> 方法来访问会话实例。而当我们想存入一条缓存的数据，让它只在下一次的请求内有效时，则可以使用 <code>flash</code> 方法。<code>flash</code> 方法接收两个参数，第一个为会话的键，第二个为会话的值，我们可以通过下面这行代码的为会话赋值。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">session()-&gt;flash(&apos;success&apos;, &apos;欢迎，您将在这里开启一段新的旅程~&apos;);</span><br></pre></td></tr></table></figure>
+<p>之后我们可以使用 <code>session()-&gt;get(&#39;success&#39;)</code> 通过键名来取出对应会话中的数据。</p>
+</li>
+</ul>
+<h3 id="会话管理"><a href="#会话管理" class="headerlink" title="会话管理"></a>会话管理</h3><h4 id="会话控制器"><a href="#会话控制器" class="headerlink" title="会话控制器"></a>会话控制器</h4><p>新建一个会话控制器，该控制器将用于处理用户登录退出相关的操作。当用户登录成功时创建会话，当用户退出登录时销毁会话。会话保存在浏览器上。</p>
+<ul>
+<li><p>可以使用 Laravel 提供的 <code>route:list</code> 命令来查看已添加的路由。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ php artisan route:list</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="身份认证"><a href="#身份认证" class="headerlink" title="身份认证"></a>身份认证</h4><p>借助 Laravel 提供的 <code>Auth</code> 的 <code>attempt</code> 方法可以让我们很方便的完成用户的身份认证操作，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (Auth::attempt([&apos;email&apos; =&gt; $email, &apos;password&apos; =&gt; $password])) &#123;</span><br><span class="line">    // 该用户存在于数据库，且邮箱和密码相符合</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>attempt</code> 方法会接收一个数组来作为第一个参数，该参数提供的值将用于寻找数据库中的用户数据。因此在上面的例子中，<code>attempt</code> 方法执行的代码逻辑如下：</p>
+<ol>
+<li>使用 <code>email</code> 字段的值在数据库中查找；</li>
+<li>如果用户被找到：<br>1). 先将传参的 <code>password</code> 值进行哈希加密，然后与数据库中 <code>password</code> 字段中已加密的密码进行匹配；<br>2). 如果匹配后两个值完全一致，会创建一个『会话』给通过认证的用户。会话在创建的同时，也会种下一个名为 <code>laravel_session</code> 的 HTTP Cookie，以此 Cookie 来记录用户登录状态，最终返回 <code>true</code>；<br>3). 如果匹配后两个值不一致，则返回 <code>false</code>；</li>
+<li>如果用户未找到，则返回 <code>false</code>。</li>
+</ol>
+<h4 id="注册后自动登录"><a href="#注册后自动登录" class="headerlink" title="注册后自动登录"></a>注册后自动登录</h4><p>现在的注册功能已经可以正常使用，但我们希望在用户注册成功后能够自动登录，这样的应用用户体验会更棒。在 Laravel 中，如果要让一个已认证通过的用户实例进行登录，可以使用以下方法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Auth::login($user);</span><br></pre></td></tr></table></figure>
+<p>可以通过调用 Laravel 默认提供的 <code>Auth::logout()</code> 方法来实现用户的退出功能。</p>
+<h3 id="用户-CRUD"><a href="#用户-CRUD" class="headerlink" title="用户 CRUD"></a>用户 CRUD</h3><h4 id="修改用户个人信息"><a href="#修改用户个人信息" class="headerlink" title="修改用户个人信息"></a>修改用户个人信息</h4><ul>
+<li><p>edit 动作主要做了以下几个操作：</p>
+<ol>
+<li>利用了 Laravel 的『隐性路由模型绑定』功能，直接读取对应 ID 的用户实例 <code>$user</code>，未找到则报错；</li>
+<li>将查找到的用户实例 <code>$user</code> 与编辑视图进行绑定；</li>
+</ol>
+</li>
+<li><p>在我们提交用户更新表单之后，将由用户控制器的 <code>update</code> 动作来做处理，因此我们需要把表单提交的请求地址指向用户更新的 URL 上。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;form method=&quot;POST&quot; action=&quot;&#123;&#123; route(&apos;users.update&apos;, $user-&gt;id )&#125;&#125;&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>上面代码转为 HTML 后如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;form method=&quot;POST&quot; action=&quot;http://sample.test/users/1&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 RESTful 架构中，我们使用 PATCH 动作来更新资源，但由于浏览器不支持发送 PATCH 动作，因此我们需要在表单中添加一个隐藏域来伪造 PATCH 请求。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&#123; method_field(&apos;PATCH&apos;) &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>转换为 HTML 代码如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;input type=&quot;hidden&quot; name=&quot;_method&quot; value=&quot;PATCH&quot;&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>表单对应视图，表单的数据提交到相应的控制器</strong></p>
+</li>
+<li><p>在用户控制器加上 <code>update</code> 方法来处理用户提交的个人信息。</p>
+<p><code>update</code> 方法接收两个参数，第一个为自动解析用户 id 对应的用户实例对象，第二个则为更新用户表单的输入数据。在我们接收到用户提交的信息时，需要先对用户提交的信息进行验证，最终调用 <code>update</code>方法对用户对象进行更新。在用户个人资料更新成功后，我们还需要将用户重定向到个人页面，方便用户第一时间查看到自己更改后的个人信息。</p>
+</li>
+</ul>
+<h4 id="权限系统"><a href="#权限系统" class="headerlink" title="权限系统"></a>权限系统</h4><ul>
+<li><p><a href="http://d.laravel-china.org/docs/5.5/middleware" target="_blank" rel="noopener">Laravel 中间件 (Middleware)</a> 为我们提供了一种非常棒的过滤机制来过滤进入应用的 HTTP 请求，例如，当我们使用 Auth 中间件来验证用户的身份时，如果用户未通过身份验证，则 Auth 中间件会把用户重定向到登录页面。如果用户通过了身份验证，则 Auth 中间件会通过此请求并接着往下执行。Laravel 框架默认为我们内置了一些中间件，例如身份验证、CSRF 保护等。所有的中间件文件都被放在项目的<code>app/Http/Middleware</code> 文件夹中。</p>
+</li>
+<li><p><strong>限制未登录用户的权限。用户通过身份认证（登录）后才可以访问：</strong></p>
+<p><code>__construct</code> 是 PHP 的构造器方法，当一个类对象被创建之前该方法将会被调用。<strong>在 <code>__construct</code> 方法中调用了 <code>middleware</code> 方法，该方法接收两个参数，第一个为中间件的名称，第二个为要进行过滤的动作。通过 <code>except</code> 方法来设定指定动作不使用 Auth 中间件进行过滤，意为除了此处指定的动作以外，所有其他动作都必须通过身份认证用户才能访问</strong>。相反的还有 <code>only</code> 方法，将只过滤指定动作。我们提倡在控制器 Auth 中间件使用中，首选 <code>except</code> 方法，这样的话，当你新增一个控制器方法时，默认是安全的，此为最佳实践。</p>
+<p>Laravel 提供的 Auth 中间件在过滤指定动作时，如该用户未通过身份验证（未登录用户），默认将会被重定向到 <code>/login</code> 登录页面。</p>
+</li>
+<li><p><strong>限制已登录用户的权限。用户登录后只能编辑自己的个人信息：</strong></p>
+<p>在完成对未登录用户的限制之后，接下来我们要限制的是已登录用户的操作。当 id 为 1 的用户去尝试更新 id 为 2 的用户信息时，我们应该返回一个 403 禁止访问的异常。<strong>在 Laravel 中可以使用 <a href="http://d.laravel-china.org/docs/5.5/authorization#policies" target="_blank" rel="noopener">授权策略 (Policy)</a> 来对用户的操作权限进行验证，在用户未经授权进行操作时将返回 403 禁止访问的异常。</strong></p>
+<p>我们可以使用以下命令来生成一个名为 <code>UserPolicy</code> 的授权策略类文件，用于管理用户模型的授权。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ php artisan make:policy UserPolicy</span><br></pre></td></tr></table></figure>
+<p>所有生成的授权策略文件都会被放置在 <code>app/Policies</code> 文件夹下。</p>
+</li>
+<li><p>为默认生成的用户授权策略添加 <code>update</code> 方法，用于用户更新时的权限验证。<code>update</code> 方法接收两个参数，第一个参数默认为当前登录用户实例，第二个参数则为要进行授权的用户实例。当两个 id 相同时，则代表两个用户是相同用户，用户通过授权，可以接着进行下一个操作。如果 id 不相同的话，将抛出 403 异常信息来拒绝访问。</p>
+</li>
+<li><p>使用授权策略需要注意以下两点：</p>
+<ol>
+<li>我们并不需要检查 <code>$currentUser</code> 是不是 NULL。未登录用户，框架会自动为其 <strong>所有权限</strong> 返回 <code>false</code>；</li>
+<li>调用时，默认情况下，我们 <strong>不需要</strong> 传递当前登录用户至该方法内，因为框架会自动加载当前登录用户（接着看下去，后面有例子）；</li>
+</ol>
+</li>
+<li><p>接下来我们还需要在 <code>AuthServiceProvider</code> 类中对授权策略进行设置。<strong><code>AuthServiceProvider</code> 包含了一个 <code>policies</code> 属性，该属性用于将各种模型对应到管理它们的授权策略上。我们需要为用户模型 <code>User</code> 指定授权策略 <code>UserPolicy</code>。</strong></p>
+</li>
+<li><p>授权策略定义完成之后，我们便可以通过<strong>在用户控制器中使用 <code>authorize</code> 方法来验证用户授权策略</strong>。默认的 <code>App\Http\Controllers\Controller</code> 类包含了 Laravel 的 <code>AuthorizesRequests</code> trait。此 trait 提供了 <code>authorize</code> 方法，它可以被用于快速授权一个指定的行为，当无权限运行该行为时会抛出 HttpException。<code>authorize</code> 方法接收两个参数，第一个为授权策略的名称，第二个为进行授权验证的数据。</p>
+<p>需要为 <code>edit</code> 和 <code>update</code> 方法加上这行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$this-&gt;authorize(&apos;update&apos;, $user);</span><br></pre></td></tr></table></figure>
+<p>这里 <code>update</code> 是指授权类里的 <code>update</code> 授权方法，<code>$user</code> 对应传参 <code>update</code> 授权方法的第二个参数。正如上面定义 <code>update</code> 授权方法时候提起的，调用时，默认情况下，我们 <strong>不需要</strong> 传递第一个参数，也就是当前登录用户至该方法内，因为框架会自动加载当前登录用户。</p>
+</li>
+<li><p><strong>重定向到用户之前尝试访问的页面：</strong></p>
+<p>当一个未登录的用户尝试访问自己的资料编辑页面时，将会自动跳转到登录页面，这时候如果用户再进行登录，则会重定向到其个人中心页面上，这种方式的用户体验并不好。更好的做法是，将用户重定向到他之前尝试访问的页面，即自己的个人编辑页面。<code>redirect()</code> 实例提供了一个 <code>intended</code> 方法，该方法可将页面重定向到上一次请求尝试访问的页面上，并接收一个默认跳转地址参数，当上一次请求记录为空时，跳转到默认地址上。</p>
+</li>
+<li><p><strong>使用 Auth 中间件仅允许已登录的用户访问，使用 Guest 中间件仅允许未登录的用户访问。</strong></p>
+</li>
+</ul>
+<h4 id="列出所有用户信息"><a href="#列出所有用户信息" class="headerlink" title="列出所有用户信息"></a>列出所有用户信息</h4><ul>
+<li><p>用户列表：</p>
+<p>用户列表对应用户控制器的 <code>index</code>动作，页面 URL 对应 <code>/users</code>。接下来我们将在用户控制器中加入 <code>index</code> 动作。并且因为用户列表的访问权限是公开的，所以我们还需要在 Auth 中间件 <code>except</code> 中新增 <code>index</code> 动作来允许游客访问。</p>
+</li>
+<li><p>批量生成假数据（示例）：</p>
+<p>假数据的生成分为两个阶段：</p>
+<ol>
+<li>对要生成假数据的模型指定字段进行赋值 - <a href="http://d.laravel-china.org/docs/5.5/testing#model-factories" target="_blank" rel="noopener">『模型工厂』</a>；</li>
+<li>批量生成假数据模型 - <a href="http://d.laravel-china.org/docs/5.5/seeding" target="_blank" rel="noopener">『数据填充』</a>；</li>
+</ol>
+</li>
+<li><p><strong>模型工厂：</strong></p>
+<p><strong>模型工厂用于指定数据表中字段（假数据）的填充规则。Laravel 默认为我们集成了 <a href="https://github.com/fzaninotto/Faker" target="_blank" rel="noopener">Faker</a> 扩展包，使用该扩展包可以让我们很方便的生成一些假数据。可以借助 Faker 和 Eloquent 模型工厂来为指定模型的每个字段设置随机值。</strong></p>
+<p><code>define</code> 定义了一个指定数据模型（如此例子 <code>User</code>）的模型工厂。<code>define</code> 方法接收两个参数，第一个参数为指定的 Eloquent 模型类，第二个参数为一个闭包函数，该闭包函数接收一个 <code>Faker</code> PHP 函数库的实例，让我们可以在函数内部使用 Faker 方法来生成假数据并为模型的指定字段赋值。</p>
+</li>
+<li><p><strong>数据填充：</strong></p>
+<p><strong>使用 <code>Seeder</code> 类来为数据库批量填充测试数据。</strong>所有的 Seeder 类文件都放在 <code>database/seeds</code>目录下，文件名需要按照『驼峰式』来命名，且严格遵守大小写规范。Laravel 默认为我们定义了一个 <code>DatabaseSeeder</code> 类，我们可以在该类中使用 <code>call</code> 方法来运行其它的 <code>Seeder</code> 类，以此控制数据填充的顺序。我们可以使用下面命令来生成一个 <code>UsersTableSeeder</code> 文件，用于填充用户相关的假数据。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ php artisan make:seeder UsersTableSeeder</span><br></pre></td></tr></table></figure>
+<p>在我们定义好了用户模型工厂之后，便可以在生成的用户数据填充文件中使用 <code>factory</code> 这个辅助函数来生成一个使用假数据的用户对象。</p>
+<p><code>times</code> 和 <code>make</code> 方法是由 <a href="https://doc.laravel-china.org/api/5.1/Illuminate/Database/Eloquent/FactoryBuilder.html" target="_blank" rel="noopener">FactoryBuilder 类</a> 提供的 API。<code>times</code> 接受一个参数用于指定要创建的模型数量，<code>make</code> 方法调用后将为模型创建一个 <a href="http://d.laravel-china.org/docs/5.5/collections" target="_blank" rel="noopener">集合</a>。<code>makeVisible</code> 方法临时显示 User 模型里指定的隐藏属性 <code>$hidden</code>，接着我们使用了 <code>insert</code> 方法来将生成假用户列表数据批量插入到数据库中。最后我们还对第一位用户的信息进行了更新，方便后面我们使用此账号登录。</p>
+<p>接着我们还需要在 <code>DatabaseSeeder</code> 中调用 <code>call</code> 方法来指定我们要运行假数据填充的文件。</p>
+<p>完成上面操作之后，我们便可以开始为用户生成批量假数据了，在运行生成假数据的命令之前，我们需要使用 <code>migrate:refresh</code> 命令来重置数据库，之后再使用 <code>db:seed</code> 执行数据填充。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ php artisan migrate:refresh</span><br><span class="line">$ php artisan db:seed</span><br></pre></td></tr></table></figure>
+<p>如果我们要单独指定执行 <code>UserTableSeeder</code> 数据库填充文件，则可以这么做：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ php artisan migrate:refresh</span><br><span class="line">$ php artisan db:seed --class=UsersTableSeeder</span><br></pre></td></tr></table></figure>
+<p>你也可以使用下面一条命令来同时完成数据库的重置和填充操作：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ php artisan migrate:refresh --seed</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分页：</p>
+<p>默认状况下，页面的当前页数由 HTTP 请求所带的 page 参数决定，当你访问 <a href="http://sample.app/users?page=2" target="_blank" rel="noopener">http://sample.app/users?page=2</a> 链接时，获取的是第二页的用户列表信息，Laravel 会自动检测到 page 的值并插入由分页器生成的链接中。<code>$users = User::paginate(10);</code> 中使用 paginate 方法来指定每页生成的数据数量为 10 条，即当我们有 50 个用户时，用户列表将被分为五页进行展示。</p>
+<p>在调用 <code>paginate</code> 方法获取用户列表之后，便可以通过以下代码在用户列表页上渲染分页链接。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;!! $users-&gt;render() !!&#125;</span><br></pre></td></tr></table></figure>
+<p>由 <code>render</code> 方法生成的 HTML 代码默认会使用 Bootstrap 框架的样式，渲染出来的视图链接也都统一会带上 <code>?page</code> 参数来设置指定页数的链接。另外还需要注意的一点是，渲染分页视图的代码必须使用 <code>{!! !!}</code> 语法，而不是 <code></code>，这样生成 HTML 链接才不会被转义。</p>
+</li>
+</ul>
+<h4 id="删除用户-amp-配置管理员权限"><a href="#删除用户-amp-配置管理员权限" class="headerlink" title="删除用户&amp;配置管理员权限"></a>删除用户&amp;配置管理员权限</h4><ul>
+<li><p>管理员：</p>
+<p>我们需要生成一个迁移文件来为用户表新增管理员字段。在生成迁移文件时，带上 <code>--table</code> 选项可以为指定数据表生成迁移文件。现在，让我们运行下面命令来为用户表新增管理员字段。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ php artisan make:migration add_is_admin_to_users_table --table=users</span><br></pre></td></tr></table></figure>
+<p>我们需要在新建的迁移文件中为用户添加一个 <code>is_admin</code> 的布尔值类型字段来判别用户是否拥有管理员身份，该字段默认为 <code>false</code>，在迁移文件执行时对该字段进行创建，回滚时则需要对该字段进行移除。</p>
+<p>使用 <code>dropColumn</code> 方法来对指定字段进行移除。</p>
+</li>
+<li><p>destroy 动作：</p>
+<p>删除用户的动作，有两个逻辑需要提前考虑：</p>
+<ol>
+<li>只有当前登录用户为管理员才能执行删除操作；</li>
+<li>删除的用户对象不是自己（即使是管理员也不能自己删自己）。</li>
+</ol>
+<p>Laravel 授权策略提供了 <code>@can</code> <a href="http://d.laravel-china.org/docs/5.5/authorization#%E4%BD%BF%E7%94%A8-Blade-%E6%A8%A1%E6%9D%BF" target="_blank" rel="noopener">Blade 命令</a>，允许我们在 Blade 模板中做授权判断。接下来让我们利用 <code>@can</code>指令，在用户列表页加上只有管理员才能看到的删除用户按钮。</p>
+<p>在 destroy 动作中，我们首先会根据路由发送过来的用户 id 进行数据查找，查找到指定用户之后再调用 Eloquent 模型提供的 <code>delete</code> 方法对用户资源进行删除，成功删除后在页面顶部进行消息提示。最后将用户重定向到上一次进行删除操作的页面，即用户列表页。</p>
+<p>删除授权策略 <code>destroy</code> 我们已经在上面创建了，这里我们在用户控制器中使用 <code>authorize</code> 方法来对删除操作进行授权验证即可。在删除动作的授权中，我们规定只有当前用户为管理员，且被删除用户不是自己时，授权才能通过。</p>
+</li>
+</ul>
+<h2 id="Voyager-后台管理框架的使用"><a href="#Voyager-后台管理框架的使用" class="headerlink" title="Voyager 后台管理框架的使用"></a>Voyager 后台管理框架的使用</h2><blockquote>
+<p>参考 GitHub 项目主页 README。</p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="1-Require-the-Package"><a href="#1-Require-the-Package" class="headerlink" title="1. Require the Package"></a>1. Require the Package</h4><p>After creating your new Laravel application you can include the Voyager package with the following command:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">composer require tcg/voyager</span><br></pre></td></tr></table></figure>
+<h4 id="2-Add-the-DB-Credentials-amp-APP-URL"><a href="#2-Add-the-DB-Credentials-amp-APP-URL" class="headerlink" title="2. Add the DB Credentials &amp; APP_URL"></a>2. Add the DB Credentials &amp; APP_URL</h4><p>Next make sure to create a new database and add your database credentials to your .env file:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DB_HOST=localhost</span><br><span class="line">DB_DATABASE=homestead</span><br><span class="line">DB_USERNAME=homestead</span><br><span class="line">DB_PASSWORD=secret</span><br></pre></td></tr></table></figure>
+<p>You will also want to update your website URL inside of the <code>APP_URL</code> variable inside the .env file:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">APP_URL=http://localhost:8000</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Only if you are on Laravel 5.4 will you need to <a href="https://voyager.readme.io/docs/adding-the-service-provider" target="_blank" rel="noopener">Add the Service Provider.</a></p>
+</blockquote>
+<h4 id="3-Run-The-Installer"><a href="#3-Run-The-Installer" class="headerlink" title="3. Run The Installer"></a>3. Run The Installer</h4><p>Lastly, we can install voyager. You can do this either with or without dummy data. The dummy data will include 1 admin account (if no users already exists), 1 demo page, 4 demo posts, 2 categories and 7 settings.</p>
+<p>To install Voyager without dummy simply run</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">php artisan voyager:install</span><br></pre></td></tr></table></figure>
+<p>If you prefer installing it with dummy run</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">php artisan voyager:install --with-dummy</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Troubleshooting: <strong>Specified key was too long error</strong>. If you see this error message you have an outdated version of MySQL, use the following solution: <a href="https://laravel-news.com/laravel-5-4-key-too-long-error" target="_blank" rel="noopener">https://laravel-news.com/laravel-5-4-key-too-long-error</a></p>
+</blockquote>
+<p>And we’re all good to go!</p>
+<p>Start up a local development server with <code>php artisan serve</code> And, visit <a href="http://localhost:8000/admin" target="_blank" rel="noopener">http://localhost:8000/admin</a>.</p>
+<h4 id="Creating-an-Admin-User"><a href="#Creating-an-Admin-User" class="headerlink" title="Creating an Admin User"></a>Creating an Admin User</h4><p>If you did go ahead with the dummy data, a user should have been created for you with the following login credentials:</p>
+<blockquote>
+<p><strong>email:</strong> <code>admin@admin.com</code><br><strong>password:</strong> <code>password</code></p>
+</blockquote>
+<p>NOTE: Please note that a dummy user is <strong>only</strong> created if there are no current users in your database.</p>
+<p>If you did not go with the dummy user, you may wish to assign admin privileges to an existing user. This can easily be done by running this command:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">php artisan voyager:admin your@email.com</span><br></pre></td></tr></table></figure>
+<p>If you did not install the dummy data and you wish to create a new admin user you can pass the <code>--create</code> flag, like so:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">php artisan voyager:admin your@email.com --create</span><br></pre></td></tr></table></figure>
+<p>And you will be prompted for the user’s name and password.</p>
+<h3 id="手动填充数据-seeder"><a href="#手动填充数据-seeder" class="headerlink" title="手动填充数据 seeder"></a>手动填充数据 seeder</h3><p>安装完成后，需要手动将 VoyagerDatabaseSeeder 在 DatabaseSeeder 类中进行调用，这样在运行 db:seed 命令时可以填充 Voyager 的数据。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$this-&gt;call(VoyagerDatabaseSeeder::class);</span><br></pre></td></tr></table></figure>
+<p>we don’t add the Voyager seeder to the default seeder, and adding the <code>--seed</code> flag to <code>migrate:refresh</code> doesn’t let you specify what seeder class should be run. The solution there is to either do as you’ve done, or add the single <a href="https://github.com/the-control-group/voyager/blob/master/publishable/database/seeds/VoyagerDatabaseSeeder.php" target="_blank" rel="noopener">VoyagerDatabaseSeeder</a> instead of the list like you’ve done, or just call it manually:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&gt; php artisan migrate:refresh --seed</span><br><span class="line">&gt; php artisan db:seed --class=VoyagerDatabaseSeeder</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Plus Xu</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://plxus.github.io/2018/03/Laravel-与-PHP-后端开发学习笔记/" title="Laravel 与 PHP 后端开发学习笔记">https://plxus.github.io/2018/03/Laravel-与-PHP-后端开发学习笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/教程/" rel="tag"># 教程</a>
+          
+            <a href="/tags/Web/" rel="tag"># Web</a>
+          
+            <a href="/tags/Laravel/" rel="tag"># Laravel</a>
+          
+            <a href="/tags/PHP/" rel="tag"># PHP</a>
+          
+            <a href="/tags/后端开发/" rel="tag"># 后端开发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/个人博客搭建记录-2018-谨贺新年/" rel="next" title="个人博客搭建记录 && 2018 谨贺新年">
+                <i class="fa fa-chevron-left"></i> 个人博客搭建记录 && 2018 谨贺新年
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar-xblog.png"
+                alt="Plus Xu" />
+            
+              <p class="site-author-name" itemprop="name">Plus Xu</p>
+              <p class="site-description motion-element" itemprop="description">没有未来的未来不是我想要的未来</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/plxus" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:xplusxu@gmail.com" target="_blank" title="Email"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://t.me/plusxu" target="_blank" title="Telegram"><i class="fa fa-fw fa-paper-plane"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-thumbs-up"></i>
+                Likes
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.fandy.club/" title="fandy 的个人小站" target="_blank">fandy 的个人小站</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://freezind.space/" title="Freezind" target="_blank">Freezind</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#毕设项目开发技术总结"><span class="nav-text">毕设项目开发技术总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#《Laravel-教程-Web-开发实战入门（Laravel-5-5）》学习笔记"><span class="nav-text">《Laravel 教程 - Web 开发实战入门（Laravel 5.5）》学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC"><span class="nav-text">MVC</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Laravel-开发说明"><span class="nav-text">Laravel 开发说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构建页面"><span class="nav-text">构建页面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置路由"><span class="nav-text">配置路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成控制器"><span class="nav-text">生成控制器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加静态页面视图"><span class="nav-text">添加静态页面视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Artisan-命令"><span class="nav-text">Artisan 命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化页面"><span class="nav-text">优化页面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#样式美化"><span class="nav-text">样式美化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Laravel-前端工作流"><span class="nav-text">Laravel 前端工作流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#局部视图"><span class="nav-text">局部视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#布局中的链接"><span class="nav-text">布局中的链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建用户注册页面"><span class="nav-text">创建用户注册页面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户模型"><span class="nav-text">用户模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#准备"><span class="nav-text">准备</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库迁移"><span class="nav-text">数据库迁移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看数据库表"><span class="nav-text">查看数据库表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型文件"><span class="nav-text">模型文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建用户对象"><span class="nav-text">创建用户对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查找用户对象"><span class="nav-text">查找用户对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更新用户对象"><span class="nav-text">更新用户对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户注册"><span class="nav-text">用户注册</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#资源控制器"><span class="nav-text">资源控制器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户数据验证"><span class="nav-text">用户数据验证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册成功"><span class="nav-text">注册成功</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#会话管理"><span class="nav-text">会话管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#会话控制器"><span class="nav-text">会话控制器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#身份认证"><span class="nav-text">身份认证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册后自动登录"><span class="nav-text">注册后自动登录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户-CRUD"><span class="nav-text">用户 CRUD</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改用户个人信息"><span class="nav-text">修改用户个人信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#权限系统"><span class="nav-text">权限系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列出所有用户信息"><span class="nav-text">列出所有用户信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除用户-amp-配置管理员权限"><span class="nav-text">删除用户&amp;配置管理员权限</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Voyager-后台管理框架的使用"><span class="nav-text">Voyager 后台管理框架的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Require-the-Package"><span class="nav-text">1. Require the Package</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Add-the-DB-Credentials-amp-APP-URL"><span class="nav-text">2. Add the DB Credentials &amp; APP_URL</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Run-The-Installer"><span class="nav-text">3. Run The Installer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Creating-an-Admin-User"><span class="nav-text">Creating an Admin User</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手动填充数据-seeder"><span class="nav-text">手动填充数据 seeder</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Plus Xu</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+  <div class="footer-custom">真理使人自由。</div>
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js"></script>
+
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-lazyload@1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.0.6"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+    
+  
+  <script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'w4Fkmdh5Xgkx6TXYlsHWz7Vx-gzGzoHsz',
+        appKey: 'bsGXVplpUluKT7GfXE9RwxEP',
+        placeholder: '说点什么…',
+        avatar:'retro',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.0.6"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.0.6"></script>
+
+
+  
+
+  
+
+</body>
+</html>
