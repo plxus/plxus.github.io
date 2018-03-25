@@ -1847,7 +1847,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #09d6fb;
+  background: #f15b83;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3034,24 +3034,24 @@ body {
   font-weight: bold;
 }
 .sidebar-nav .sidebar-nav-active:hover {
-  color: #1976d2;
+  color: #1e88e5;
 }
 .sidebar-nav li:hover {
-  color: #1976d2;
+  color: #1e88e5;
 }
 .sidebar-nav .sidebar-nav-active {
-  color: #1976d2;
-  border-bottom-color: #1976d2;
+  color: #1e88e5;
+  border-bottom-color: #1e88e5;
 }
 .post-toc .nav .active-current > a {
-  color: #1976d2;
+  color: #1e88e5;
 }
 .post-toc .nav .active-current > a:hover {
-  color: #1976d2;
+  color: #1e88e5;
 }
 .post-toc .nav .active > a {
-  color: #1976d2;
-  border-bottom-color: #1976d2;
+  color: #1e88e5;
+  border-bottom-color: #1e88e5;
 }
 .post-block {
   padding: 50px 40px;
@@ -3064,7 +3064,14 @@ body {
   margin-top: 30px;
 }
 .btn {
+  border: 1px solid #555;
   border-radius: 2px;
+}
+.btn:active,
+.btn:hover {
+  color: #1e88e5;
+  border: 1px solid #1e88e5;
+  background-color: #fff;
 }
 @media (max-width: 991px) and (min-width: 768px) {
   .post-block {
@@ -3091,7 +3098,7 @@ body {
   margin: 0 0 40px 0;
 }
 .post-header h1 {
-  margin: 0 20px 15px 20px;
+  margin: 0 0 20px 0;
 }
 .post-body h2 {
   padding-bottom: 2px;
@@ -3107,8 +3114,8 @@ body {
   background-color: transparent;
 }
 .post-nav {
-  margin-top: 30px;
-  padding-top: 10px;
+  margin-top: 40px;
+  padding-top: 20px;
 }
 .pagination {
   box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
@@ -3127,21 +3134,37 @@ body {
     padding: 40px 14px 14px 14px;
   }
 }
+.v .vwrap .vheader .vinput:focus {
+  border-bottom-color: #1e88e5 !important;
+}
 .v .vbtn {
   color: #555 !important;
   border-radius: 3px !important;
 }
 .v .vbtn:active,
 .v .vbtn:hover {
-  color: #1976d2 !important;
-  border-color: #1976d2 !important;
+  color: #1e88e5 !important;
+  border-color: #1e88e5 !important;
+}
+.v .vinfo .col {
+  font-size: 16px !important;
+}
+.v .vinfo .vcount .vnum {
+  font-size: 1.4rem !important;
 }
 .v .vlist .vcard section .vfooter .vat {
   color: #708090 !important;
 }
+.v .vlist .vcard .vhead .vsys {
+  display: none !important;
+}
+.footer {
+  clear: both;
+}
 .sidebar-position-right .footer-inner {
   padding-right: 0;
-margin
+  padding-top: 60px;
+  padding-bottom: 20px;
 }
 .footer-inner .author {
   color: #555;
